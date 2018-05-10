@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VillageSim", "VillageSim\VillageSim.csproj", "{66F5F925-C708-4843-A488-3F33AA36996B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpPathFinding", "EpPathFinding.cs\EpPathFinding.csproj", "{82FE700A-0BA3-49D0-ACE0-C1F87FBE5021}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66F5F925-C708-4843-A488-3F33AA36996B}.Debug|x86.ActiveCfg = Debug|x86
+		{66F5F925-C708-4843-A488-3F33AA36996B}.Debug|x86.Build.0 = Debug|x86
+		{66F5F925-C708-4843-A488-3F33AA36996B}.Release|x86.ActiveCfg = Release|x86
+		{66F5F925-C708-4843-A488-3F33AA36996B}.Release|x86.Build.0 = Release|x86
+		{82FE700A-0BA3-49D0-ACE0-C1F87FBE5021}.Debug|x86.ActiveCfg = Debug|x86
+		{82FE700A-0BA3-49D0-ACE0-C1F87FBE5021}.Debug|x86.Build.0 = Debug|x86
+		{82FE700A-0BA3-49D0-ACE0-C1F87FBE5021}.Release|x86.ActiveCfg = Release|x86
+		{82FE700A-0BA3-49D0-ACE0-C1F87FBE5021}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C196B58-AFE7-40BB-A85E-B071B39CF5D6}
+	EndGlobalSection
+EndGlobal
