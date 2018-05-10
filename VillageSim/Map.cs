@@ -22,7 +22,7 @@ namespace VillageSim {
             _searchGrid = new StaticGrid(width, height);
             _width = width;
             _height = height;
-            jpParam = new JumpPointParam(null, false, false, false);
+            jpParam = new JumpPointParam(null, true, false, false);
             _tileObjects = new List<TileObject>();
         }
 
@@ -47,7 +47,10 @@ namespace VillageSim {
                  }
             }
             for (int i = 0; i < 25; i++) {
-                _tileObjects.Add(new Resource(r.Next(0,24), r.Next(0, 24), resource, ResourceType.Rock));
+                int x = r.Next(0, 24);
+                int y = r.Next(0, 24);
+                _tileObjects.Add(new Resource(x, y, resource, ResourceType.Rock));
+                //_searchGrid.SetWalkableAt(new GridPos(x, y), false);
             }
         }
 

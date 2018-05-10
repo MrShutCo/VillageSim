@@ -9,6 +9,7 @@ namespace VillageSim.GroundObjects {
         Water,
         Wood,
         Rock,
-        Ore
+        Ore,
+        Food
     }
 }

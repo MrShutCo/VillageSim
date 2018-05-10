@@ -18,9 +18,17 @@ namespace VillageSim.GroundObjects {
             _count = 10;
         }
 
+        public bool Gather() {
+            if (_count > 0) {
+                _count--;
+                return true;
+            }
+            return false;
+        }
+
         public override void Draw(SpriteBatch sb) {
             sb.Draw(_tex, Position, Color.White);
-            sb.DrawString(Game1.font, _count.ToString(), Position + new Vector2(7, 7), Color.White);
+            sb.DrawString(Game1.font, _count.ToString(), Position + new Vector2(7, -15), Color.Black);
         }
 
     }

@@ -9,7 +9,7 @@ namespace VillageSim {
     public class Village {
 
         public List<Villager> v;
-        public static Map Map;
+        public static Map Map; //Icky bicky
 
         public Village(Map map) {
             Map = map;

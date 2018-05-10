@@ -16,8 +16,9 @@ namespace VillageSim {
         public float Speed { get; private set; }
         string _name;
         Texture2D _tex;
-        Queue<Tile> _moveQueue;
-        Queue<Task> _tasks;
+        //Queue<Task> _tasks;
+        SimplePriorityQueue<Task, int> _tasks;
+        public int FoodCount;
 
         event EventHandler currDoing;
 
@@ -25,26 +26,27 @@ namespace VillageSim {
             Position = new Vector2(x * 32, y * 32);
             _name = name;
             _tex = tex;
-            _moveQueue = new Queue<Tile>();
             Speed = 2.0f;
-            _tasks = new Queue<Task>();
+            _tasks = new SimplePriorityQueue<Task, int>();
+            FoodCount = 0;
         }
 
-        public void AddTask(Task task) {
-            _tasks.Enqueue(task);
+        public void AddTask(Task task, int priority) {
+            _tasks.Enqueue(task, priority);
         }
 
 
         public void Update(GameTime gt) {
             if (_tasks.Count > 0) {
-                Task temp = _tasks.Peek();
+                Task temp = _tasks.First;
                 if (temp.IsFinished) {
                     _tasks.Dequeue();
                     if (_tasks.Count == 0) {
                         return;
                     }
-                    temp = _tasks.Peek();
+                    temp = _tasks.First;
                 }
+                //Ewwwww.... But I dunno what else to do
                 if (!temp.HasStarted) {
                     temp.HasStarted = true;
                     switch(temp.TaskName) {
@@ -52,6 +54,11 @@ namespace VillageSim {
                             MoveTask t = (MoveTask)temp;
                             t.StartTask(Position);
                             break;
+                        case "GatherResourceTask":
+                            GatherResourceTask grt = (GatherResourceTask)temp;
+                            grt.StartTask(this);
+                            break;
+
                     }
                 }
                 switch (temp.TaskName) {
@@ -60,6 +67,12 @@ namespace VillageSim {
                         Vector2 p = Position;
                         t.DoTask(Speed, ref p);
                         Position = p;
+                        break;
+                    case "GatherResourceTask":
+                        GatherResourceTask grt = (GatherResourceTask)temp;
+                        int food = FoodCount;
+                        grt.DoTask(ref food, gt);
+                        FoodCount = food;
                         break;
                 }
             }
@@ -71,11 +84,13 @@ namespace VillageSim {
 
         public void DrawUI(SpriteBatch sb) {
             sb.DrawString(Game1.font, "X: " + ((int)Position.X / 32).ToString() + "\nY: " + ((int)Position.Y / 32).ToString(), new Vector2(30, 400), Color.Black);
+            sb.DrawString(Game1.font, "Food count: " + FoodCount, new Vector2(30, 380), Color.Black);
             string tasks = "";
             foreach(Task t in _tasks) {
                 tasks += t.TaskName + ": " + t.UIInfo() + "\n";
             }
             sb.DrawString(Game1.font, tasks, new Vector2(600, 35), Color.Black);
+
         }
 
 

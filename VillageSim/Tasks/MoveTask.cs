@@ -7,20 +7,6 @@ using System.Threading.Tasks;
 
 namespace VillageSim.Tasks {
 
-    public class MoveEventArgs : EventArgs {
-        public Map map;
-        public Villager v;
-        public int eX, eY;
-
-        public MoveEventArgs(Map map, Villager v, int eX, int eY) {
-            this.map = map;
-            this.v = v;
-            this.eX = eX;
-            this.eY = eY;
-        }
-    }
-
-
     class MoveTask : Task {
 
 
@@ -47,6 +33,11 @@ namespace VillageSim.Tasks {
             }
         }
 
+        /// <summary>
+        /// Moves to the next node in the moveQueue, updating a ref position (of any object)
+        /// </summary>
+        /// <param name="speed">speed that task is done</param>
+        /// <param name="posi">vector to be moved along</param>
         public void DoTask(float speed, ref Vector2 posi) {
             if (_moveQueue.Count > 0) {
                 Tile t = _moveQueue.Peek();

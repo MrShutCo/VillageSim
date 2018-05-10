@@ -56,7 +56,7 @@
 /processorParam:TextureFormat=Compressed
 /build:text.spritefont
 
-#begin me.png
+#begin Food.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -66,5 +66,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:me.png
+/build:Food.png
 

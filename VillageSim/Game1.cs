@@ -52,10 +52,11 @@ namespace VillageSim {
             inputHandler.RegisterKey(Keys.Right, () => Camera.Pos -= new Vector2(-32, 0));
             inputHandler.RegisterKey(Keys.Up, () => Camera.Pos -= new Vector2(0, 32));
             inputHandler.RegisterKey(Keys.Down, () => Camera.Pos -= new Vector2(0, -32));
-            testMap.CreateMap(Content.Load<Texture2D>("ground"), Content.Load<Texture2D>("Wall"),Content.Load<Texture2D>("me"));
+            testMap.CreateMap(Content.Load<Texture2D>("ground"), Content.Load<Texture2D>("Wall"),Content.Load<Texture2D>("Food"));
             v = new Villager(5, 10, "Tyler", Content.Load<Texture2D>("robot"));
             village = new Village(testMap);
-            inputHandler.RegisterKey(Keys.Enter, () => v.AddTask(new MoveTask(r.Next(0, 24), r.Next(0, 24))));
+            inputHandler.RegisterKey(Keys.Enter, () => v.AddTask(new MoveTask(r.Next(0, 24), r.Next(0, 24)), 1));
+            inputHandler.RegisterKey(Keys.Space, () => v.AddTask(new GatherResourceTask(GroundObjects.ResourceType.Food), 1));
             r = new Random();
             //v.AddTask(new MoveTask(10, 15), 1);
             //v.AddTask(new EatTask())
